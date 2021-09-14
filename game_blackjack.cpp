@@ -1,46 +1,55 @@
 
 #include "game_blackjack.h"
 
-
 void Card::Flip() {
   m_IsFaceUp = !(m_IsFaceUp);
 }
+
 int Card::GetValue() const {
-  //если карта перевернута лицом вниз, ее значение равно О
   int value = 0;
   if (m_IsFaceUp)
   {
-      // значение - это число, указанное на карте
-      value = m_rank;
-      // значение равно 10 для JACK, QUEEN и KING
-      if (value > 10)
-      {
-          value = 10;
-      }
+    value = m_rank;
+    if (value > 10)
+    {
+      value = 10;
+    }
   }
   return value;
 }
 
-int Hand::GetValue() const {
+int Hand::GetTotal() const {
   int sum = 0;
-  for(const Card* c: cards)
+  for(const auto& c: cards)
   {
-    if(c->GetValueCard() == ACE)
+    if(c->GetRank() == ACE)
       sum += 11;
     else
       sum += c->GetValue();
   }
-  for(const Card* c: cards)
-    if(c->GetValueCard() == ACE)
+  for(const auto& c: cards)
+    if(c->GetRank() == ACE)
       sum -= 10;
   return sum;
 }
 
 void Hand::Clear()
 {
-  for(Card* pCard: cards)
+  for(auto& pCard: cards)
   {
     delete pCard;
   }
   cards.clear();
+}
+
+bool GenericPlayer::IsBoosted() const
+{
+  if(GetTotal() > 21)
+    return true;
+  return false;
+}
+
+void GenericPlayer::Bust() const
+{
+  cout << "Player " << name << " gets busted." << endl;
 }

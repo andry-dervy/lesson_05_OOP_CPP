@@ -6,29 +6,17 @@
 //============================================================================
 #include <QCoreApplication>
 #include <iostream>
-#include <random>
 #include <stdlib.h>
-#include <cmath>
-#include <chrono>
-#include <list>
-#include <set>
+//#include <list>
+//#include <set>
 #include <string>
-#include <sstream>
+//#include <sstream>
 using namespace std;
 //----------------------------------------------------------------------------
 //#define NDEBUG
 #include <cassert>
 //----------------------------------------------------------------------------
-//#include "arrayint.h"
-//#include "game_blackjack.h"
-//----------------------------------------------------------------------------
-int getRandomNum(int min, int max)
-{
-  const static auto seed = std::chrono::system_clock::now().time_since_epoch().count();
-  static std::mt19937_64 generator(seed);
-  std::uniform_int_distribution<int> dis(min, max);
-  return dis(generator);
-}
+#include "game_blackjack.h"
 //----------------------------------------------------------------------------
 /*
 1. Реализовать шаблон класса Pair1,
@@ -75,117 +63,6 @@ void task_1()
   const Pair1<double> p2(3.4, 7.8);
   cout << "Pair: " << p2.first() << ' ' << p2.second() << '\n';
 
-
-
-/*
-  const int MIN = 0;
-  const int MAX = 100;
-
-  int AMOUNT;
-  int SIZE;
-
-
-  //Test 1
-  cout << "Test 1\n" << endl;
-
-  AMOUNT = 10;
-  SIZE = 20;
-  {
-    cout << "Created array capacity is SIZE equaled " <<
-            SIZE << "." << endl;
-    ArrayInt array(SIZE);
-
-
-    cout << "Added " << AMOUNT <<
-            " elements to the array." << endl;
-    for(int i = 0; i < AMOUNT; ++i)
-    {
-      array.push_back(getRandomNum(MIN,MAX)%100);
-    }
-    array.print();
-
-    cout << "Erased the array." << endl;
-    array.erase();
-    array.print();
-  }
-
-  //Test 2
-  cout << "\nTest 2\n" << endl;
-
-  AMOUNT = 20;
-  SIZE = 10;
-  {
-    cout << "Created array capacity is " <<
-            SIZE << "." << endl;
-    ArrayInt array(SIZE);
-
-
-    cout << "Added " << AMOUNT <<
-            " elements to the array." << endl;
-    for(int i = 0; i < AMOUNT; ++i)
-    {
-      array.push_back(getRandomNum(MIN,MAX)%100);
-    }
-    array.print();
-
-    cout << "Erased the array." << endl;
-    array.erase();
-    array.print();
-  }
-
-  //Test 3
-  cout << "\nTest 3\n" << endl;
-
-  AMOUNT = 10;
-  SIZE = 20;
-  {
-    cout << "Created array capacity is " <<
-            SIZE << "." << endl;
-    ArrayInt array(SIZE);
-
-
-    cout << "Added " << AMOUNT <<
-            " elements to the array." << endl;
-    for(int i = 0; i < AMOUNT; ++i)
-    {
-      array.push_back(getRandomNum(MIN,MAX)%100);
-    }
-    array.print();
-
-    int Value = 50;
-    int Position = 5;
-
-    cout << "Insert " << Value <<
-            " to the array before the " << Position <<
-            " position." << endl;
-    array.insertBefore(Value,Position);
-    array.print();
-  }
-
-  //Test 4
-  cout << "\nTest 4\n" << endl;
-
-  AMOUNT = 10;
-  SIZE = 20;
-  {
-    cout << "Created array capacity is " <<
-            SIZE << "." << endl;
-    ArrayInt array(SIZE);
-
-    cout << "Added " << AMOUNT <<
-            " elements to the array." << endl;
-    for(int i = 0; i < AMOUNT; ++i)
-    {
-      array.push_back(getRandomNum(MIN,MAX)%100);
-    }
-    array.print();
-
-
-    cout << "Array was sorted." << endl;
-    array.sort();
-    array.print();
-  }
-//*/
   cout << endl;
 }
 //----------------------------------------------------------------------------
@@ -275,8 +152,6 @@ public:
     :Pair<string,T2>(aFirst,aSecond)
   {}
   ~StringValuePair(){}
-//  const string& first() const {return f;}
-//  const T2& second() const {return s;}
 };
 
 void task_3()
@@ -306,6 +181,8 @@ void task_3()
     • Bust() - выводит на экран имя игрока и объявляет,
 что у него перебор.
 //*/
+
+
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------
 //----------------------------------------------------------------------------

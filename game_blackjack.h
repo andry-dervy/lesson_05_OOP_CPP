@@ -2,6 +2,7 @@
 #define GAME_BLACKJACK_H
 
 #include <QCoreApplication>
+#include <iostream>
 
 using namespace std;
 
@@ -37,6 +38,19 @@ public:
   void Add(Card *card){cards.push_back(card);}
   void Clear();
   int GetTotal() const;
+};
+
+class GenericPlayer: public Hand
+{
+private:
+  string name;
+public:
+  GenericPlayer(string aName = "")
+    :name(aName){}
+  virtual ~GenericPlayer(){}
+  virtual bool IsHitting() const;
+  bool IsBoosted() const;
+  void Bust() const;
 };
 
 
